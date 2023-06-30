@@ -1,8 +1,9 @@
 <template>
-  <div :class="[task.reminder ? 'reminder' : ' ','task']">
+  <div @dblclick="$emit('toggle-reminder')" :class="[task.reminder ? 'reminder' : ' ','task']">
     <h3>
       {{ task.text }}
-      <i @click="$emit('onDelete',task.id)" class="fas fa-times"></i>
+      <!-- <i @click="$emit('onDelete',task.id)" class="fas fa-times"></i> -->
+      <i @click="deleted(task.id)" class="fas fa-times"></i>
     </h3>
     
     <p>{{ task.day }}</p>
@@ -14,8 +15,13 @@ import { defineProps} from "vue";
  defineProps({
   task: Object,
 });
+/*emit in script*/
 
+const emit = defineEmits(['onDelete','toggle-reminder'])
 
+const deleted = (id)=>{
+emit('onDelete',id)
+}
 </script>
 
 <style scoped>

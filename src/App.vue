@@ -1,7 +1,7 @@
  <template>
   <div class="container">
     <Header title= "Task Tracker" />
-    <Tasks  @deleteTask='deleteTask' :tasks ="tasks"/>
+    <Tasks @toggle-reminder="toggleReminder" @deleteTask='deleteTask' :tasks ="tasks"/>
   </div>
 </template>
 
@@ -35,8 +35,22 @@ onMounted(() => {
 });
 
 const deleteTask = (id) => {
-  tasks.value = tasks.value.filter((task) => task.id !== id);
+  if(confirm('Are you sure?!!'))
+  {
+  //tasks.value = tasks.value.filter((task) => task.id == id); //explanation in my book
+  tasks.value = tasks.value.filter((task) => task.id !== id); //explanation in my book
+  }
+
 };
+const toggleReminder = (id) => {
+  /*
+  tasks.value = tasks.value.map((task) => {
+    return task.id === id ? { ...task, reminder: !task.reminder } : task;
+  });
+  */
+ console.log(id)
+}
+
 </script>
 
 
