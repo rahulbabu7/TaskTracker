@@ -1,14 +1,43 @@
-<template>
+ <template>
   <div class="container">
-    <Header title="Task Tracker" />
+    <Header title= "Task Tracker" />
+    <Tasks :tasks ="tasks"/>
   </div>
 </template>
 
 <script setup>
-import Header from "./components/Header.vue";
+import { ref, onMounted } from 'vue';
+import Header from './components/Header.vue'
+import Tasks from './components/Tasks.vue'
+
+const tasks = ref([]);
+
+onMounted(() => {
+  tasks.value = [
+    {
+      id: 1,
+      text: "hello",
+      day: "march 20",
+      remainder: true
+    },
+    {
+      id: 2,
+      text: "hel",
+      day: "march 20",
+      remainder: true
+    },
+    {
+      id: 3,
+      text: "helo",
+      day: "march 20",
+      remainder: true
+    }
+  ];
+});
 </script>
 
-<style scoped>
+
+<style>
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
 
 * {

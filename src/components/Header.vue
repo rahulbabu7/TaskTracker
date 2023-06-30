@@ -1,6 +1,7 @@
 <template>
     <header>
         <h1> {{ title }}</h1>
+        <Button text="Add Task" color='green'/>
     </header>
  
 </template>
@@ -9,8 +10,9 @@
 import { defineProps } from 'vue';
 
 defineProps({
-    title:string,
+    title:String,
 })
+import Button from './Button.vue'
 </script>
 
 <style scoped>
