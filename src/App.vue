@@ -1,7 +1,7 @@
  <template>
   <div class="container">
     <Header title= "Task Tracker" />
-    <Tasks :tasks ="tasks"/>
+    <Tasks @delete-task="deleteTask" :tasks ="tasks"/>
   </div>
 </template>
 
@@ -12,25 +12,28 @@ import Tasks from './components/Tasks.vue'
 
 const tasks = ref([]);
 
+const deleteTask = (id) =>{
+  console.log("task",id)
+}
 onMounted(() => {
   tasks.value = [
     {
       id: 1,
       text: "hello",
       day: "march 20",
-      remainder: true
+      reminder: true
     },
     {
       id: 2,
       text: "hel",
       day: "march 20",
-      remainder: true
+      reminder: true
     },
     {
       id: 3,
       text: "helo",
       day: "march 20",
-      remainder: true
+      reminder: false
     }
   ];
 });
