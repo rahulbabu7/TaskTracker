@@ -2,7 +2,7 @@
   <div :class="[task.reminder ? 'reminder' : ' ','task']">
     <h3>
       {{ task.text }}
-      <i @click="onDelete(task.id)" class="fas fa-times"></i>
+      <i @click="$emit('onDelete',task.id)" class="fas fa-times"></i>
     </h3>
     
     <p>{{ task.day }}</p>
@@ -10,18 +10,12 @@
 </template>
 
 <script setup>
-import { defineProps, getCurrentInstance } from "vue";
-
-const props = defineProps({
+import { defineProps} from "vue";
+ defineProps({
   task: Object,
 });
 
-const onDelete = (id) => {
-  const instance = getCurrentInstance();
-  if (instance) {
-    instance.emit("delete-task", id); // Emit the custom event with the 'id' as payload
-  }
-};
+
 </script>
 
 <style scoped>

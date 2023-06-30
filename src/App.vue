@@ -1,7 +1,7 @@
  <template>
   <div class="container">
     <Header title= "Task Tracker" />
-    <Tasks @delete-task="deleteTask" :tasks ="tasks"/>
+    <Tasks  @deleteTask='deleteTask' :tasks ="tasks"/>
   </div>
 </template>
 
@@ -11,10 +11,6 @@ import Header from './components/Header.vue'
 import Tasks from './components/Tasks.vue'
 
 const tasks = ref([]);
-
-const deleteTask = (id) =>{
-  console.log("task",id)
-}
 onMounted(() => {
   tasks.value = [
     {
@@ -37,6 +33,10 @@ onMounted(() => {
     }
   ];
 });
+
+const deleteTask = (id) => {
+  tasks.value = tasks.value.filter((task) => task.id !== id);
+};
 </script>
 
 
